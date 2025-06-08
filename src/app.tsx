@@ -26,7 +26,8 @@ import NotificationHandler from './components/notification-handler';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 import styles from './app.module.css';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 initializeNotificationSystem();
 
 const App = () => {
@@ -66,6 +67,18 @@ const App = () => {
 
   return (
     <div className={`${styles.app} ${theme}`}>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <div className='asset-preloader'>
         <div className='asset-preloader-seedit-text-light'></div>
         <div className='asset-preloader-seedit-text-dark'></div>

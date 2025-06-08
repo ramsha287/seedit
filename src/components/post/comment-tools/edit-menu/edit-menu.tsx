@@ -4,6 +4,7 @@ import { PublishCommentEditOptions, useComment, useEditedComment, usePublishComm
 import styles from './edit-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
+import { toast } from 'react-toastify';
 
 const { addChallenge } = challengesStore.getState();
 
@@ -34,7 +35,7 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
     onChallengeVerification: alertChallengeVerificationFailed,
     onError: (error: Error) => {
       console.warn(error);
-      alert('Comment edit failed. ' + error.message);
+      toast.error('Comment edit failed. ' + error.message);
     },
   };
 

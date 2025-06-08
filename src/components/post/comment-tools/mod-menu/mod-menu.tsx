@@ -5,6 +5,7 @@ import { PublishCommentModerationOptions, useComment, useEditedComment, usePubli
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
+import { toast } from 'react-toastify';
 
 const { addChallenge } = challengesStore.getState();
 
@@ -43,7 +44,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
     onChallengeVerification: alertChallengeVerificationFailed,
     onError: (error: Error) => {
       console.warn(error);
-      alert(error.message);
+      toast.error(error.message);
     },
   };
 

@@ -6,6 +6,7 @@ import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import usePublishReply from '../../hooks/use-publish-reply';
 import Markdown from '../markdown';
 import styles from './reply-form.module.css';
+import { toast } from 'react-toastify';
 
 type ReplyFormProps = {
   cid: string;
@@ -138,12 +139,12 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
     const currentUrl = publishReplyOptions?.link || '';
 
     if (!currentContent.trim() && !currentUrl) {
-      alert(t('empty_comment_alert'));
+      toast.error(t('empty_comment_alert'));
       return;
     }
 
     if (currentUrl && !isValidURL(currentUrl)) {
-      alert(t('invalid_url_alert'));
+      toast.error(t('invalid_url_alert'));
       return;
     }
     publishReply();
